@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Movie Website</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <input type="text" id="search" placeholder="Search Movies...">
+    </nav>
+
+    <div class="hero">
+        <% movies.forEach(movie => { %>
+            <div class="slide">
+                <img src="/uploads/<%= movie.image %>" alt="<%= movie.title %>">
+            </div>
+        <% }); %>
+    </div>
+
+    <h2>Bollywood</h2>
+    <div class="movies">
+        <% movies.filter(m => m.category === "Bollywood").forEach(movie => { %>
+            <div class="movie">
+                <img src="/uploads/<%= movie.image %>">
+                <h3><%= movie.title %></h3>
+            </div>
+        <% }); %>
+    </div>
+
+    <script>
+        document.getElementById('search').addEventListener('input', async (e) => {
+            let query = e.target.value;
+            let res = await fetch(`/movies/search?q=${query}`);
+            let data = await res.json();
+            console.log(data); // Implement real search results here
+        });
+    </script>
+</body>
+</html>

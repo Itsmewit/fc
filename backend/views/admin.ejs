@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Panel - Upload Movie</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h2>Upload a New Movie</h2>
+    <form action="/admin/upload" method="POST" enctype="multipart/form-data">
+        <label>Movie Title:</label>
+        <input type="text" name="title" required>
+
+        <label>Category:</label>
+        <select name="category">
+            <option value="Bollywood">Bollywood</option>
+            <option value="Hollywood">Hollywood</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>Tags (comma-separated):</label>
+        <input type="text" name="tags" required>
+
+        <label>Upload Image:</label>
+        <input type="file" name="image" required>
+
+        <button type="submit">Upload Movie</button>
+    </form>
+</body>
+</html>
